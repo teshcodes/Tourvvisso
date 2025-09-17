@@ -15,19 +15,19 @@ export default function AdminLogin() {
   };
 
   return (
-    <div className="flex items-center justify-center min-h-screen">
-      <div className="bg-white p-6 rounded-xl shadow-md w-96">
-        <h2 className="text-2xl font-bold mb-4">Admin Login</h2>
+    <div className="flex items-center justify-center bg-gray-50 px-4 my-5">
+      <div className="bg-white p-6 sm:p-8 rounded-xl shadow-lg w-full max-w-sm sm:max-w-md">
+        <h2 className="text-2xl font-bold mb-6 text-center">Admin Login</h2>
         <input
           type="password"
           placeholder="Enter password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
-          className="w-full border rounded px-3 py-2 mb-4"
+          className="w-full border rounded-lg px-3 py-2 mb-4 focus:outline-none focus:ring-2 focus:ring-blue-500"
         />
         <button
           onClick={handleLogin}
-          className="w-full bg-blue-600 text-white py-2 rounded hover:bg-blue-700"
+          className="w-full bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700 transition"
         >
           Login
         </button>
