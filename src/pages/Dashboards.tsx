@@ -19,10 +19,27 @@ import {
   Bar,
   Cell,
 } from "recharts";
+import LatestActivities from "./LatestActivities";
+import { NavLink } from "react-router-dom";
 
-const usersData = [{ value: 50 }, { value: 10000 }, { value: 1000 }, { value: 10000 }];
-const tripsData = [{ value: 10000 }, { value: 1000 }, { value: 10000 }, { value: 50 }];
-const activeData = [{ value: 50 }, { value: 10000 }, { value: 1000 }, { value: 20000 }];
+const usersData = [
+  { value: 50 },
+  { value: 10000 },
+  { value: 1000 },
+  { value: 10000 },
+];
+const tripsData = [
+  { value: 10000 },
+  { value: 1000 },
+  { value: 10000 },
+  { value: 50 },
+];
+const activeData = [
+  { value: 50 },
+  { value: 10000 },
+  { value: 1000 },
+  { value: 20000 },
+];
 
 export default function Dashboards() {
   const userGrowthData = [
@@ -48,27 +65,63 @@ export default function Dashboards() {
     <div className="flex flex-col md:flex-row h-screen">
       <div className="flex flex-col justify-between bg-white w-full md:w-64 p-4 shadow-md">
         <div className="flex items-center gap-2 mb-8">
-          <img className="w-6 h-6" src="./mylogo.png" alt="TeshCodes Logo" />
+          <img className="w-6 h-6" src="/mylogo.png" alt="TeshCodes Logo" />
           <h1 className="text-lg font-semibold opacity-75">Tourvisto</h1>
         </div>
 
         <nav className="flex flex-col gap-4 flex-1">
-          <a href="#" className="flex items-center gap-3 text-gray-700 hover:text-[#256FF1]">
+          <NavLink
+            to="/dashboard"
+            className={({ isActive }) =>
+              `flex items-center gap-3 px-2 py-2 rounded 
+           ${
+             isActive
+               ? "text-[#256FF1] font-medium"
+               : "text-gray-700 hover:text-[#256FF1]"
+           }`
+            }
+          >
             <FaTachometerAlt />
             <span>Dashboard</span>
-          </a>
-          <a href="#" className="flex items-center gap-3 text-gray-700 hover:text-[#256FF1]">
+          </NavLink>
+
+          <NavLink
+            to="/admin/users"
+            className={({ isActive }) =>
+              `flex items-center gap-3 px-2 py-2 rounded 
+           ${
+             isActive
+               ? "text-[#256FF1] font-medium"
+               : "text-gray-700 hover:text-[#256FF1]"
+           }`
+            }
+          >
             <FaUsers />
             <span>All Users</span>
-          </a>
-          <a href="#" className="flex items-center gap-3 text-gray-700 hover:text-[#256FF1]">
+          </NavLink>
+
+          <NavLink
+            to="/ai-trip"
+            className={({ isActive }) =>
+              `flex items-center gap-3 px-2 py-2 rounded 
+           ${
+             isActive
+               ? "text-[#256FF1] font-medium"
+               : "text-gray-700 hover:text-[#256FF1]"
+           }`
+            }
+          >
             <FaRobot />
             <span>AI Trip</span>
-          </a>
+          </NavLink>
         </nav>
 
         <div className="flex items-center gap-3 border-t pt-4">
-          <img src="/teshcodes.png" alt="User Profile" className="w-10 h-10 rounded-full" />
+          <img
+            src="/teshcodes.png"
+            alt="User Profile"
+            className="w-10 h-10 rounded-full"
+          />
           <div className="flex-1">
             <p className="font-medium">Tesh Codes</p>
             <p className="text-sm text-gray-500">onlyteshcodes@gmail.com</p>
@@ -81,7 +134,9 @@ export default function Dashboards() {
 
       <div className="flex-1 p-6 bg-gray-50 overflow-y-auto">
         <h2 className="text-2xl font-bold">Welcome Tesh 👋</h2>
-        <p className="mt-3 opacity-75 text-lg">Track activity, trends and popular destinations in real time</p>
+        <p className="mt-3 opacity-75 text-lg">
+          Track activity, trends and popular destinations in real time
+        </p>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-10">
           <div className="bg-white p-6 rounded-lg shadow">
@@ -96,7 +151,13 @@ export default function Dashboards() {
               <div className="w-28 h-10 -mt-6">
                 <ResponsiveContainer width="100%" height="100%">
                   <LineChart data={usersData}>
-                    <Line type="monotone" dataKey="value" stroke="#22c55e" strokeWidth={2} dot={false} />
+                    <Line
+                      type="monotone"
+                      dataKey="value"
+                      stroke="#22c55e"
+                      strokeWidth={2}
+                      dot={false}
+                    />
                   </LineChart>
                 </ResponsiveContainer>
               </div>
@@ -115,7 +176,13 @@ export default function Dashboards() {
               <div className="w-28 h-10 -mt-6">
                 <ResponsiveContainer width="100%" height="100%">
                   <LineChart data={tripsData}>
-                    <Line type="monotone" dataKey="value" stroke="#ef4444" strokeWidth={2} dot={false} />
+                    <Line
+                      type="monotone"
+                      dataKey="value"
+                      stroke="#ef4444"
+                      strokeWidth={2}
+                      dot={false}
+                    />
                   </LineChart>
                 </ResponsiveContainer>
               </div>
@@ -123,7 +190,9 @@ export default function Dashboards() {
           </div>
 
           <div className="bg-white p-6 rounded-lg shadow">
-            <h3 className="text-gray-500 text-sm font-medium">Active Users Today</h3>
+            <h3 className="text-gray-500 text-sm font-medium">
+              Active Users Today
+            </h3>
             <p className="text-2xl font-bold mt-2">520</p>
             <div className="flex items-center justify-between mt-2">
               <div className="flex items-center gap-2">
@@ -134,7 +203,13 @@ export default function Dashboards() {
               <div className="w-28 h-10 -mt-6">
                 <ResponsiveContainer width="100%" height="100%">
                   <LineChart data={activeData}>
-                    <Line type="monotone" dataKey="value" stroke="#22c55e" strokeWidth={2} dot={false} />
+                    <Line
+                      type="monotone"
+                      dataKey="value"
+                      stroke="#22c55e"
+                      strokeWidth={2}
+                      dot={false}
+                    />
                   </LineChart>
                 </ResponsiveContainer>
               </div>
@@ -145,57 +220,93 @@ export default function Dashboards() {
         <h1 className="font-bold text-2xl mt-7">Trips</h1>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mt-5">
           <div className="bg-white rounded-lg shadow-md overflow-hidden">
-            <img src="./thornridge.jpg" alt="Thornridge Cir. Shiloh" className="w-full h-40 object-cover" />
+            <img
+              src="/thornridge.jpg"
+              alt="Thornridge Cir. Shiloh"
+              className="w-full h-40 object-cover"
+            />
             <div className="p-4">
-              <h3 className="font-semibold text-lg pb-1">Thornridge Cir. Shiloh</h3>
+              <h3 className="font-semibold text-lg pb-1">
+                Thornridge Cir. Shiloh
+              </h3>
               <p className="flex items-center text-gray-600 text-sm mt-1">
                 <FaMapPin className="mr-2" /> St George's Ln Singapore
               </p>
               <div className="flex gap-2 mt-4">
-                <span className="bg-[#ECFDF3] text-[#027A48] border rounded-xl px-3 py-1 text-xs">Mountains</span>
-                <span className="bg-[#F3F0FB] text-[6941C6] border rounded-xl px-3 py-1 text-xs">City</span>
+                <span className="bg-[#ECFDF3] text-[#027A48] border rounded-xl px-3 py-1 text-xs">
+                  Mountains
+                </span>
+                <span className="bg-[#F3F0FB] text-[6941C6] border rounded-xl px-3 py-1 text-xs">
+                  City
+                </span>
               </div>
             </div>
           </div>
 
           <div className="bg-white rounded-xl shadow-md overflow-hidden">
-            <img src="./roraima.jpg" alt="Roraima Tepui" className="w-full h-40 object-cover" />
+            <img
+              src="/roraima.jpg"
+              alt="Roraima Tepui"
+              className="w-full h-40 object-cover"
+            />
             <div className="p-4">
               <h3 className="font-semibold text-lg pb-1">Roraima Tepui</h3>
               <p className="flex items-center text-gray-600 text-sm mt-1">
                 <FaMapPin className="mr-2" /> Canaima Park, VeneZuela
               </p>
               <div className="flex gap-2 mt-4">
-                <span className="bg-[#F0F9FF] text-[#026AA2] border rounded-xl px-3 py-1 text-xs">Solo travel</span>
-                <span className="bg-[#F8F9FC] text-[#363F72] border rounded-xl px-3 py-1 text-xs">Budget</span>
+                <span className="bg-[#F0F9FF] text-[#026AA2] border rounded-xl px-3 py-1 text-xs">
+                  Solo travel
+                </span>
+                <span className="bg-[#F8F9FC] text-[#363F72] border rounded-xl px-3 py-1 text-xs">
+                  Budget
+                </span>
               </div>
             </div>
           </div>
 
           <div className="bg-white rounded-lg shadow-md overflow-hidden">
-            <img src="./socotra.jpg" alt="Socotra Island" className="w-full h-40 object-cover" />
+            <img
+              src="/socotra.jpg"
+              alt="Socotra Island"
+              className="w-full h-40 object-cover"
+            />
             <div className="p-4">
               <h3 className="font-semibold text-lg pb-1">Socotra Island</h3>
               <p className="flex items-center text-gray-600 text-sm mt-1">
                 <FaMapPin className="mr-2" /> Yemen
               </p>
               <div className="flex gap-2 mt-4">
-                <span className="bg-[#F7EDF6] text-[#C11574] border rounded-xl px-3 py-1 text-xs">Luxury</span>
-                <span className="border rounded-xl px-3 py-1 text-xs">Beach</span>
+                <span className="bg-[#F7EDF6] text-[#C11574] border rounded-xl px-3 py-1 text-xs">
+                  Luxury
+                </span>
+                <span className="border rounded-xl px-3 py-1 text-xs">
+                  Beach
+                </span>
               </div>
             </div>
           </div>
 
           <div className="bg-white rounded-lg shadow-md overflow-hidden">
-            <img src="./baikal.jpg" alt="San Lake Baikal" className="w-full h-40 object-cover" />
+            <img
+              src="/baikal.jpg"
+              alt="San Lake Baikal"
+              className="w-full h-40 object-cover"
+            />
             <div className="p-4">
-              <h3 className="bg-[#FFF4ED] text-[#B93815] font-semibold text-lg pb-1">San Lake Baikal</h3>
+              <h3 className="font-semibold text-lg pb-1">
+                San Lake Baikal
+              </h3>
               <p className="flex items-center text-gray-600 text-sm mt-1">
                 <FaMapPin className="mr-2" /> Siberia, Russia
               </p>
               <div className="flex gap-2 mt-4">
-                <span className="text-[#B93815] bg-[#FFF4ED] border rounded-xl px-3 py-1 text-xs">Sports</span>
-                <span className="bg-[#FFF1F3] text-[#C01048] border rounded-xl px-3 py-1 text-xs">Adventurous</span>
+                <span className="text-[#B93815] bg-[#FFF4ED] border rounded-xl px-3 py-1 text-xs">
+                  Sports
+                </span>
+                <span className="bg-[#FFF1F3] text-[#C01048] border rounded-xl px-3 py-1 text-xs">
+                  Adventurous
+                </span>
               </div>
             </div>
           </div>
@@ -236,6 +347,7 @@ export default function Dashboards() {
             </ResponsiveContainer>
           </div>
         </div>
+        <LatestActivities />
       </div>
     </div>
   );

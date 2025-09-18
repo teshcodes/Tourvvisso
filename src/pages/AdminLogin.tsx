@@ -8,7 +8,7 @@ export default function AdminLogin() {
   const handleLogin = () => {
     if (password === "password@1.") {
       localStorage.setItem("isAdmin", "true");
-      navigate("/admin"); // go to dashboard
+      navigate("/admin/dashboards"); 
     } else {
       alert("Wrong password!");
     }
@@ -17,7 +17,12 @@ export default function AdminLogin() {
   return (
     <div className="flex items-center justify-center bg-gray-50 px-4 my-5">
       <div className="bg-white p-6 sm:p-8 rounded-xl shadow-lg w-full max-w-sm sm:max-w-md">
-        <h2 className="text-2xl font-bold mb-6 text-center">Admin Login</h2>
+        <div className="flex items-center justify-center mb-4 gap-2">
+        <img src="/mylogo.png" alt="TechCodes Logo" className="h-6 w-6"/>
+        <h1 className="font-bold">Tourviso</h1>
+        </div>
+        <h2 className="text-2xl font-bold mb-4 text-center">Admin Dashboard Login</h2>
+        <p className="opacity-75 text-sm mb-4 items-center justify-center ">Sign in with Google to manage destinations, itineraries, and user activity with ease.</p>
         <input
           type="password"
           placeholder="Enter password"
