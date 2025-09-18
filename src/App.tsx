@@ -11,11 +11,11 @@ export default function App() {
     <BrowserRouter>
       <Routes>
         {/* Redirect root (/) to /admin/login */}
-        <Route path="/" element={<Navigate to="/admin/login" replace />} />
+        <Route path="/login" element={<Navigate to="/admin/login" replace />} />
 
         {/* Admin login page */}
         <Route element={<AuthLayout />}>
-          <Route path="/admin" element={<AdminLogin />} />
+          <Route path="/admin/login" element={<AdminLogin />} />
         </Route>
 
         {/* Protected admin pages */}
