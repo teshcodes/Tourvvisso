@@ -10,7 +10,7 @@ export default function AuthLayout() {
       <div className="absolute inset-0 bg-black/40" />
 
       {/* Centered Card */}
-      <div className="relative z-10 w-full max-w-md bg-white rounded-2xl shadow-lg p-8">
+      <div className="relative z-10 w-full max-w-md bg-white rounded-2xl shadow-lg p-6 sm:p-8 overflow-y-auto my-6">
         <Outlet />
       </div>
     </div>

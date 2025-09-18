@@ -1,1 +1,17 @@
 @import "tailwindcss";
+@import "leaflet/dist/leaflet.css";
+
+.react-select__control {
+  border-radius: 0.5rem;
+  padding: 2px;
+  border: 1px solid #d1d5db; /* Tailwind gray-300 */
+}
+
+.react-select__control--is-focused {
+  border-color: #d87d4a !important; /* your accent */
+  box-shadow: 0 0 0 2px rgba(216, 125, 74, 0.3);
+}
+
+.react-select__menu {
+  z-index: 50;
+}

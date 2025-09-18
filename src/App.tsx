@@ -4,6 +4,7 @@ import AuthLayout from "./layouts/AuthLayout";
 import AdminLogin from "./pages/AdminLogin";
 import Dashboards from "./pages/Dashboards";
 import AllUsers from "./pages/AllUsers";
+import AiTrips from "./pages/AiTrips";
 import ProtectedRoute from "./components/protectedRoute";
 
 export default function App() {
@@ -35,9 +36,14 @@ export default function App() {
             </ProtectedRoute>
           }
         />
-
-        {/* Optional 404 */}
-        <Route path="*" element={<h1 className="text-center mt-20">404 - Page Not Found</h1>} />
+        <Route
+          path="admin/ai-trips"
+          element={
+            <ProtectedRoute>
+              <AiTrips />
+            </ProtectedRoute>
+          }
+        />
       </Routes>
     </BrowserRouter>
   );
