@@ -11,7 +11,7 @@ export default function App() {
     <BrowserRouter>
       <Routes>
         {/* Redirect root (/) to /admin/login */}
-        <Route path="/login" element={<Navigate to="/admin/login" replace />} />
+        <Route path="/" element={<Navigate to="/admin/login" replace />} />
 
         {/* Admin login page */}
         <Route element={<AuthLayout />}>
