@@ -3,7 +3,7 @@ import { Outlet } from "react-router-dom";
 export default function AuthLayout() {
   return (
     <div
-      className="flex items-center justify-center min-h-screen bg-cover bg-center relative"
+      className="flex items-center justify-center h-screen bg-cover bg-center relative"
       style={{ backgroundImage: "url('/background-image.jpg')" }}
     >
       {/* Dark overlay for contrast */}

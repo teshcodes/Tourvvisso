@@ -98,9 +98,8 @@ export default function AllUsers() {
   };
 
   return (
-    <div className="flex min-h-screen">
-      {/* Sidebar */}
-      <SidebarNav />
+     <div className="flex flex-col md:flex-row h-screen">
+          <SidebarNav />
 
       {/* Main content */}
       <div className="flex-1 p-6 overflow-y-auto">

@@ -13,11 +13,11 @@ export default function AdminLogin() {
     setError("");
 
     if (password.trim() === "password@1.") {
-      localStorage.setItem("isAdmin", "true");
+      localStorage.setItem("role", "admin");
       navigate("/admin/dashboards");
     } else {
-      setError("Wrong password! Please try again.");
-    }
+    setError("Please enter a valid email.");
+  }
   };
 
   return (

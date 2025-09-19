@@ -1,16 +1,16 @@
-// src/components/ProtectedRoute.tsx
 import { Navigate } from "react-router-dom";
 import type { ReactNode } from "react";
 
 interface ProtectedRouteProps {
   children: ReactNode;
+  allowedRole: "admin" | "client";
 }
 
-export default function ProtectedRoute({ children }: ProtectedRouteProps) {
-  const isAdmin = localStorage.getItem("isAdmin") === "true";
+export default function ProtectedRoute({ children, allowedRole }: ProtectedRouteProps) {
+  const role = localStorage.getItem("role");
 
-  if (!isAdmin) {
-    return <Navigate to="/admin/login" replace />;
+  if (role !== allowedRole) {
+    return <Navigate to={`/${allowedRole}/login`} replace />;
   }
 
   return <>{children}</>;
