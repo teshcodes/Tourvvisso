@@ -1,12 +1,13 @@
 import { FaArrowLeft, FaMapMarkerAlt, FaStar, FaMapPin } from "react-icons/fa";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 
 export default function TripDetailsPage() {
   const navigate = useNavigate();
+  const { state: trip } = useLocation();
 
-  const tripData = {
+  const tripData = trip || {
     id: 1,
-    title: "5-Day Japan Highlights: Culture, Food and Adventure",
+    title: "Japan",
     location: "Tokyo, Kyoto, Osaka",
     price: 604,
     duration: "5 days",
@@ -61,25 +62,27 @@ export default function TripDetailsPage() {
     },
   ];
 
+  const headerTitle = `5-day ${tripData.title} Highlights: Culture, Food and Adventure`;
+
   return (
     <section className="max-w-5xl mx-auto py-10 px-4">
       {/* Back button */}
       <button
         onClick={() => navigate(-1)}
-        className="flex items-center text-blue-600 hover:underline mb-6"
+        className="flex items-center text-blue-600 hover:underline mb-6 cursor-pointer"
       >
         <FaArrowLeft className="mr-2" /> Go back
       </button>
 
       {/* Title + Meta */}
       <h1 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-2">
-        5-Day Japan Highlights: Culture, Food and Adventure
+        {headerTitle}
       </h1>
       <div className="flex flex-wrap items-center gap-4 text-gray-600 mb-6">
         <span className="flex items-center gap-1 text-sm">
-          <FaMapMarkerAlt /> Tokyo, Kyoto, Osaka
+          <FaMapMarkerAlt /> {tripData.location}
         </span>
-        <span className="text-sm">5 days</span>
+        <span className="text-sm">{tripData.duration}</span>
       </div>
 
       {/* Images */}
@@ -128,19 +131,22 @@ export default function TripDetailsPage() {
 
       {/* Description */}
       <div className="mb-6">
-        <h2 className="text-2xl font-semibold mb-3">5-Day Japan Adventure</h2>
+        <h2 className="text-2xl font-semibold mb-3">
+          5-Day {tripData.title} Adventure
+        </h2>
         <p className="text-gray-700 leading-relaxed">
-          Experience the best of Japan in 5 unforgettable days, traveling
-          through Tokyo, Kyoto, and Osaka. From the bustling streets of Shibuya
-          to the historic temples of Kyoto and the vibrant food scene in Osaka,
-          this itinerary blends culture, sightseeing, and local flavors.
+          Experience the best of {tripData.title} in {tripData.duration},
+          traveling through {tripData.location}. From breathtaking views to
+          vibrant local culture, this itinerary blends sightseeing, adventure,
+          and authentic experiences.
         </p>
         <p className="text-gray-700 leading-relaxed mt-3">
-          Relax in a Hakone onsen, explore ancient shrines, and indulge in
-          authentic Japanese cuisine — all while enjoying seamless travel on the
-          Shinkansen.
+          Relax, explore, and indulge in unique adventures — all while enjoying
+          a seamless travel experience designed for you.
         </p>
-        <p className="text-2xl font-bold text-gray-900 mt-4">$604</p>
+        <p className="text-2xl font-bold text-gray-900 mt-4">
+          ${tripData.price}
+        </p>
       </div>
 
       {/* Itinerary */}
@@ -239,8 +245,10 @@ export default function TripDetailsPage() {
       {/* Checkout Button */}
       <div className="flex justify-center mt-8">
         <button
-          onClick={() => navigate("/client/checkout", { state: { trip: tripData } })}
-          className="flex items-center gap-3 bg-blue-600 hover:bg-blue-700 text-white font-semibold px-6 py-3 rounded-2xl shadow-lg transition"
+          onClick={() =>
+            navigate("/client/checkout", { state: { trip: tripData } })
+          }
+          className="flex items-center gap-3 bg-blue-600 hover:bg-blue-700 text-white font-semibold px-6 py-3 rounded-2xl shadow-lg transition cursor-pointer"
         >
           Pay and join the trip
           <span className="bg-white text-blue-600 font-bold px-3 py-1 rounded-xl shadow">

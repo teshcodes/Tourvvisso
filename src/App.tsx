@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import AuthLayout from "./layouts/AuthLayout";
 
 import AdminLogin from "./pages/AdminLogin";
@@ -10,15 +10,17 @@ import ProtectedRoute from "./components/protectedRoute";
 import ClientLogin from "./pages/ClientLogin";
 import TripDetailsPage from "./pages/TripDetailsPage";
 import CheckoutPage from "./pages/CheckoutPage";
+import ConfirmationPage from "./pages/confirmationPage";
+import RoleSelectionPage from "./pages/RoleSelectionPage";
 
 export default function App() {
   return (
     <BrowserRouter>
       <Routes>
-        {/* Redirect root (/) to /admin/login */}
-        <Route path="/" element={<Navigate to="/admin/login" replace />} />
+        {/* Role selection page (landing gate) */}
+        <Route path="/" element={<RoleSelectionPage />} />
 
-        {/* Admin login page and Client */}
+        {/* Auth pages (wrapped in AuthLayout) */}
         <Route element={<AuthLayout />}>
           <Route path="/admin/login" element={<AdminLogin />} />
           <Route path="/client/login" element={<ClientLogin />} />
@@ -33,17 +35,6 @@ export default function App() {
             </ProtectedRoute>
           }
         />
-
-        {/* Protected client pages */}
-        <Route
-          path="/client/dashboards"
-          element={
-            <ProtectedRoute allowedRole="client">
-              <ClientDashboards />
-            </ProtectedRoute>
-          }
-        />
-
         <Route
           path="/admin/users"
           element={
@@ -60,8 +51,22 @@ export default function App() {
             </ProtectedRoute>
           }
         />
+
+        {/* Protected client pages */}
+        <Route
+          path="/client/dashboards"
+          element={
+            <ProtectedRoute allowedRole="client">
+              <ClientDashboards />
+            </ProtectedRoute>
+          }
+        />
         <Route path="/client/trip/:id" element={<TripDetailsPage />} />
         <Route path="/client/checkout" element={<CheckoutPage />} />
+
+        {/* Shared trip routes */}
+        <Route path="/trip/:id" element={<TripDetailsPage />} />
+        <Route path="/checkout/confirmation" element={<ConfirmationPage />} />
       </Routes>
     </BrowserRouter>
   );

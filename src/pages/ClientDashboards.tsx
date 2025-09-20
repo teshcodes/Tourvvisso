@@ -134,7 +134,14 @@ export default function ClientDashboards() {
               Customize your travel itinerary, discover exciting destinations,
               save your preferences, and explore with confidence.
             </p>
-            <button className="px-6 py-3 bg-[#256FF1] hover:bg-blue-300 text-[#FFFFFF] rounded-lg font-semibold w-fit">
+            <button
+              onClick={() =>
+                document
+                  .getElementById("handpicked-trips")
+                  ?.scrollIntoView({ behavior: "smooth" })
+              }
+              className="px-6 py-3 bg-[#256FF1] hover:bg-blue-300 text-[#FFFFFF] rounded-lg font-semibold w-fit cursor-pointer"
+            >
               Get Started
             </button>
           </div>
@@ -311,7 +318,7 @@ export default function ClientDashboards() {
       </section>
 
       {/* Handpicked Trips */}
-      <section className="py-10">
+      <section id="handpicked-trips" className="py-10">
         <div className="max-w-6xl mx-auto px-4">
           {/* Header */}
           <h1 className="text-2xl font-bold mb-2">Handpicked Trips</h1>
@@ -325,7 +332,9 @@ export default function ClientDashboards() {
             {paginatedTrips.map((trip) => (
               <div
                 key={`${trip.id}-${currentPage}`}
-                onClick={() => navigate(`/client/trip/${trip.id}`, { state: trip })}
+                onClick={() =>
+                  navigate(`/client/trip/${trip.id}`, { state: trip })
+                }
                 className="w-[270px] h-[316px] bg-white rounded-xl shadow-md overflow-hidden flex flex-col mx-auto cursor-pointer hover:shadow-lg transition"
               >
                 {/* Image + Price */}
