@@ -1,6 +1,7 @@
-import { FaSignOutAlt, FaMapPin } from "react-icons/fa";
+import { FaMapPin } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
+import { LuLogOut } from "react-icons/lu";
 
 export default function ClientDashboards() {
   const trips = [
@@ -169,7 +170,7 @@ export default function ClientDashboards() {
               onClick={handleLogout}
               className="text-red-500 hover:text-red-700"
             >
-              <FaSignOutAlt className="w-10 h-10 rounded-full border-white" />
+              <LuLogOut className="w-6 h-6 cursor-pointer rounded-full border-white" />
             </button>
           </div>
         </div>
@@ -210,7 +211,7 @@ export default function ClientDashboards() {
                     alt="profile"
                     className="w-6 h-6 rounded-full border border-white"
                   />
-                  <p className="text-sm opacity-90">196 Activities</p>
+                  <p className="text-sm opacity-90 text-pink-300 fond-bold">196 Activities</p>
                 </div>
               </div>
             </div>
@@ -382,7 +383,7 @@ export default function ClientDashboards() {
               <button
                 disabled={currentPage === 1}
                 onClick={() => setCurrentPage((p) => Math.max(p - 1, 1))}
-                className="px-4 py-2 bg-gray-200 rounded disabled:opacity-50"
+                className="px-4 py-2 bg-gray-200 rounded disabled:opacity-50 cursor-pointer"
               >
                 Previous
               </button>
@@ -406,7 +407,7 @@ export default function ClientDashboards() {
                 onClick={() =>
                   setCurrentPage((p) => Math.min(p + 1, totalPages))
                 }
-                className="px-4 py-2 bg-gray-200 rounded disabled:opacity-50"
+                className="px-4 py-2 bg-gray-200 rounded disabled:opacity-50 cursor-pointer"
               >
                 Next
               </button>
@@ -418,9 +419,9 @@ export default function ClientDashboards() {
               <button
                 disabled={currentPage === 1}
                 onClick={() => setCurrentPage((p) => Math.max(p - 1, 1))}
-                className="p-2 bg-gray-200 rounded-full disabled:opacity-50"
+                className="py-1 px-2 bg-gray-200 rounded-lg disabled:opacity-50"
               >
-                ‹
+                Previous
               </button>
 
               {/* Dots to represent pages */}
@@ -441,9 +442,9 @@ export default function ClientDashboards() {
                 onClick={() =>
                   setCurrentPage((p) => Math.min(p + 1, totalPages))
                 }
-                className="p-2 bg-gray-200 rounded-full disabled:opacity-50"
+                className="py-1 px-2 bg-gray-200 rounded-lg disabled:opacity-50"
               >
-                ›
+                Next
               </button>
             </div>
           </div>

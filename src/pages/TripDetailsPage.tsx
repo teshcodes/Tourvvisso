@@ -1,9 +1,14 @@
 import { FaArrowLeft, FaMapMarkerAlt, FaStar, FaMapPin } from "react-icons/fa";
 import { useNavigate, useLocation } from "react-router-dom";
+import { useEffect } from "react";
 
 export default function TripDetailsPage() {
   const navigate = useNavigate();
   const { state: trip } = useLocation();
+
+  useEffect(() => {
+    window.scrollTo({ top:0, behavior: "smooth" });
+  }, []);
 
   const tripData = trip || {
     id: 1,
