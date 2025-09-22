@@ -13,6 +13,8 @@ import CheckoutPage from "./pages/CheckoutPage";
 import ConfirmationPage from "./pages/confirmationPage";
 import RoleSelectionPage from "./pages/RoleSelectionPage";
 
+import { SpeedInsights } from "@vercel/speed-insights/next"
+
 export default function App() {
   return (
     <BrowserRouter>
@@ -67,6 +69,8 @@ export default function App() {
         {/* Shared trip routes */}
         <Route path="/trip/:id" element={<TripDetailsPage />} />
         <Route path="/checkout/confirmation" element={<ConfirmationPage />} />
+
+        <SpeedInsights />
       </Routes>
     </BrowserRouter>
   );
